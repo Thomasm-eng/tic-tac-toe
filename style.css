@@ -1,0 +1,33 @@
+#wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+#result{
+    width:220px;
+    height:100px;
+    
+}
+#game-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    border: 1px solid black;
+}
+.grid-item{
+    border: 1px solid black;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: arial;
+    height: 130px;
+    width: 130px;
+    cursor: pointer;
+    
+}
+.reset{
+    cursor:pointer;
+}
