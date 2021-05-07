@@ -32,7 +32,13 @@ const gameDisplay = (() => {
     for(i = 0; i < gridItems.length; i++) {
         gridItems[i].setAttribute("data-index", i);
     }
-    gridItems.forEach(item => item.addEventListener('click', () => {
+    const gameText = document.getElementById('game-text');
+
+    const updateGameText = (text) => {
+        gameText.textContent = text;
+    }
+
+    const gamePlay = function(item){
         if(gameBoard.getIndexData(item.dataset.index) === undefined){
             if(count % 2 === 0) {
                 gameBoard.setIndexData(item.dataset.index, playerX.getMarker());
@@ -47,24 +53,24 @@ const gameDisplay = (() => {
             count++;
         }
         winGame();
+        
+    }
+    gridItems.forEach(item => item.addEventListener('click', (e) => {
+        if(gameOver === true)return;
+        gamePlay(e.target);
     }))
-
    
     const resetGrid = () => {
         gridItems.forEach(item => item.textContent = "")
         gameBoard.resetBoard();
         count = 0;
+        gameOver = false;
         updateGameText("Player X's turn");
     }
     const resetButton = document.getElementById('reset');
     resetButton.addEventListener('click', () => resetGrid());
     
-    const gameText = document.getElementById('game-text');
-
-    const updateGameText = (text) => {
-        gameText.textContent = text;
-    }
-
+   
     const checkRows = () => {
         let i = 0;
         while (i < 7){
@@ -100,13 +106,19 @@ const gameDisplay = (() => {
                 gameOver = true;
             }
         }
-        
+    }
+    const checkTie = () => {
+        if(count === 9){
+            updateGameText("It's a Tie");
+            gameOver = true;
+        }
     }
     const winGame = () => {
+        checkTie();
         checkRows();
         checkDiagonals();
         checkColumns();
-        return gameOver;
+        
     }
     
     return {
@@ -118,8 +130,15 @@ const gameDisplay = (() => {
         winGame,
         gameOver,
         
+        
     };
 
 })();
 
+const gameComputer = (() => {
+    
 
+    return {
+
+    }
+})();
