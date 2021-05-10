@@ -1,3 +1,6 @@
+body{
+    background-color: white;
+}
 #wrapper{
     display: flex;
     justify-content: center;
@@ -6,9 +9,17 @@
 
 }
 #result{
-    width:220px;
-    height:100px;
+    width:150px;
+    height:65px;
+    text-align: center;
+    margin: 5px;
     
+}
+#game-title{
+    border-bottom: 2px solid black;
+    width: 100%;
+    text-align: center;
+    background-color: gray;
 }
 #game-grid{
     display: grid;
@@ -28,6 +39,18 @@
     cursor: pointer;
     
 }
+.grid-item:hover{
+    background-color: silver;
+}
+
 .reset{
     cursor:pointer;
+    margin:8px;
+    height: 30px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid black;
+}
+.reset:hover{
+    transform: scale(1.2);
 }
